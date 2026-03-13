@@ -147,6 +147,21 @@ coverage.xml
 .dmypy.json
 dmypy.json
 
+# ==================== 其他 ====================
+# 项目概览文件（自动生成）
+.project-overview
+
+# ruff
+.ruff_cache/
+
+# ==================== 内部文档（不提交到开源） ====================
+FINAL_STATUS.md
+INSTALL_AND_SUBMIT.md
+SUBMIT_CHECKLIST.md
+GITHUB_SETUP.md
+GITHUB_SUBMIT.md
+PROJECT_SUMMARY.md
+
 # Pyre type checker
 .pyre/
 
