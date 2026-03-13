@@ -182,7 +182,7 @@ openclaw install auto-summary-system
 
 2. **手动安装**
 ```bash
-git clone https://github.com/yourusername/auto-summary-system.git
+git clone https://github.com/1303996014/auto-summary-system.git
 cd auto-summary-system
 pip install -r requirements.txt
 python3 main.py init

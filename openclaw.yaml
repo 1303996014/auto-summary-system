@@ -8,9 +8,9 @@ author:
   email: "community@openclaw.org"
 
 license: MIT
-homepage: "https://github.com/yourusername/auto-summary-system"
-repository: "https://github.com/yourusername/auto-summary-system.git"
-documentation: "https://github.com/yourusername/auto-summary-system/blob/main/README.md"
+homepage: "https://github.com/1303996014/auto-summary-system"
+repository: "https://github.com/1303996014/auto-summary-system.git"
+documentation: "https://github.com/1303996014/auto-summary-system/blob/main/README.md"
 
 tags:
   - automation
@@ -55,7 +55,7 @@ requirements:
 
 installation:
   type: "git"
-  url: "https://github.com/yourusername/auto-summary-system.git"
+  url: "https://github.com/1303996014/auto-summary-system.git"
   
   steps:
     - name: "安装Python依赖"

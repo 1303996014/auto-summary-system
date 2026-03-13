@@ -37,7 +37,7 @@ nano config.yaml
 
 ```bash
 # 克隆仓库
-git clone https://github.com/yourusername/auto-summary-system.git
+git clone https://github.com/1303996014/auto-summary-system.git
 cd auto-summary-system
 
 # 安装依赖
@@ -54,7 +54,7 @@ nano config.yaml
 
 ```bash
 # 下载最新发布版本
-wget https://github.com/yourusername/auto-summary-system/releases/latest/download/auto-summary-system.zip
+wget https://github.com/1303996014/auto-summary-system/releases/latest/download/auto-summary-system.zip
 
 # 解压并安装
 unzip auto-summary-system.zip
@@ -262,7 +262,7 @@ docker run -it --rm openclaw/cli
 openclaw install auto-summary-system
 
 # 测试2: Git克隆安装
-git clone https://github.com/yourusername/auto-summary-system.git
+git clone https://github.com/1303996014/auto-summary-system.git
 cd auto-summary-system
 python3 test_system.py
 
@@ -364,7 +364,7 @@ openclaw install auto-summary-system
 openclaw run auto-summary-system add "完成登录功能"
 openclaw run auto-summary-system scheduler start
 
-GitHub: https://github.com/yourusername/auto-summary-system
+GitHub: https://github.com/1303996014/auto-summary-system
 ```
 
 ## ✅ 最终确认

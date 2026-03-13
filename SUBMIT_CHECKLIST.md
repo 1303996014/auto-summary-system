@@ -174,7 +174,7 @@ openclaw install auto-summary-system
 
 ### 方式2: GitHub源码安装
 ```bash
-git clone https://github.com/yourusername/auto-summary-system.git
+git clone https://github.com/1303996014/auto-summary-system.git
 cd auto-summary-system
 pip install -r requirements.txt
 python3 main.py init
@@ -182,7 +182,7 @@ python3 main.py init
 
 ### 方式3: GitHub Releases下载
 ```bash
-wget https://github.com/yourusername/auto-summary-system/releases/latest/download/auto-summary-system.zip
+wget https://github.com/1303996014/auto-summary-system/releases/latest/download/auto-summary-system.zip
 unzip auto-summary-system.zip
 ```
 

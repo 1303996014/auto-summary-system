@@ -63,7 +63,7 @@ nano config.yaml
 
 ```bash
 # 克隆仓库
-git clone https://github.com/yourusername/auto-summary-system.git
+git clone https://github.com/1303996014/auto-summary-system.git
 cd auto-summary-system
 
 # 安装依赖
@@ -80,7 +80,7 @@ nano config.yaml
 
 ```bash
 # 下载最新发布版本
-wget https://github.com/yourusername/auto-summary-system/releases/latest/download/auto-summary-system.zip
+wget https://github.com/1303996014/auto-summary-system/releases/latest/download/auto-summary-system.zip
 
 # 解压
 unzip auto-summary-system.zip
@@ -305,8 +305,8 @@ python3 test_system.py
 
 ## 📧 联系方式
 
-- 项目地址: [https://github.com/yourusername/auto-summary-system](https://github.com/yourusername/auto-summary-system)
-- 问题反馈: [GitHub Issues](https://github.com/yourusername/auto-summary-system/issues)
+- 项目地址: [https://github.com/1303996014/auto-summary-system](https://github.com/1303996014/auto-summary-system)
+- 问题反馈: [GitHub Issues](https://github.com/1303996014/auto-summary-system/issues)
 - OpenClaw社区: [https://openclaw.org/community](https://openclaw.org/community)
 
 ---
@@ -315,9 +315,9 @@ python3 test_system.py
 
 **Made with ❤️ by OpenClaw Community**
 
-[🏠 首页](https://github.com/yourusername/auto-summary-system) • 
-[📖 文档](https://github.com/yourusername/auto-summary-system/blob/main/USAGE_EXAMPLES.md) • 
-[🚀 快速开始](https://github.com/yourusername/auto-summary-system/blob/main/QUICKSTART.md) • 
-[🤝 贡献](https://github.com/yourusername/auto-summary-system/blob/main/README.md#贡献)
+[🏠 首页](https://github.com/1303996014/auto-summary-system) • 
+[📖 文档](https://github.com/1303996014/auto-summary-system/blob/main/USAGE_EXAMPLES.md) • 
+[🚀 快速开始](https://github.com/1303996014/auto-summary-system/blob/main/QUICKSTART.md) • 
+[🤝 贡献](https://github.com/1303996014/auto-summary-system/blob/main/README.md#贡献)
 
 </div>

@@ -4,7 +4,7 @@
   "description": "自动化汇总系统 - 支持日报、周报自动生成与推送，多Skill协同架构",
   "author": "OpenClaw Community",
   "license": "MIT",
-  "repository": "https://github.com/yourusername/auto-summary-system",
+  "repository": "https://github.com/1303996014/auto-summary-system",
   "keywords": ["summary", "report", "automation", "daily", "weekly", "openclaw"],
   "categories": ["productivity", "automation", "reporting"],
   "requirements": {
