@@ -2,14 +2,14 @@
 
 ## 安装启动
 
-### 方式1: OpenClaw安装（推荐）
+### 方式1: GitHub克隆安装（推荐）
 
 ```bash
-# 安装Skill
-openclaw install auto-summary-system
+# 克隆仓库到 OpenClaw skills 目录
+git clone https://github.com/1303996014/auto-summary-system.git ~/.openclaw/skills/auto-summary-system
 
-# 进入项目目录
-cd /Users/a1111/user/skill/auto-summary-system
+# 进入目录
+cd ~/.openclaw/skills/auto-summary-system
 
 # 编辑配置（填写客户邮箱和SMTP信息）
 nano config.yaml
@@ -18,7 +18,7 @@ nano config.yaml
 python3 test_system.py
 ```
 
-### 方式2: 手动安装
+### 方式2: 本地目录安装
 
 ```bash
 # 进入项目目录

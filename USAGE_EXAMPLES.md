@@ -5,6 +5,11 @@
 ### 1. 安装系统
 
 ```bash
+# 方式1: GitHub克隆到 OpenClaw skills 目录（推荐）
+git clone https://github.com/1303996014/auto-summary-system.git ~/.openclaw/skills/auto-summary-system
+cd ~/.openclaw/skills/auto-summary-system
+
+# 方式2: 本地目录安装
 # 进入项目目录
 cd auto-summary-system
 
@@ -13,11 +18,6 @@ pip install -r requirements.txt
 
 # 初始化系统
 python3 main.py init
-```
-
-或通过OpenClaw安装：
-```bash
-openclaw install auto-summary-system
 ```
 
 ### 2. 配置系统

@@ -46,20 +46,20 @@
 
 ## 🚀 快速安装
 
-### 方式1: OpenClaw一键安装（推荐）
+### 方式1: GitHub克隆安装（推荐）
 
 ```bash
-# 一键安装（自动处理所有依赖和配置）
-openclaw install auto-summary-system
+# 克隆仓库到 OpenClaw skills 目录
+git clone https://github.com/1303996014/auto-summary-system.git ~/.openclaw/skills/auto-summary-system
 
-# 进入项目目录
-cd auto-summary-system
+# 进入目录
+cd ~/.openclaw/skills/auto-summary-system
 
 # 编辑配置文件（关键步骤）
 nano config.yaml
 ```
 
-### 方式2: GitHub源码安装
+### 方式2: 本地目录安装
 
 ```bash
 # 克隆仓库
