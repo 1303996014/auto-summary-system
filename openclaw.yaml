@@ -1,0 +1,222 @@
+name: auto-summary-system
+display_name: "自动化汇总系统"
+version: 1.0.0
+description: "基于OpenClaw的自动化汇总系统，支持日报、周报自动生成与推送，采用多Skill协同架构"
+
+author:
+  name: "OpenClaw Community"
+  email: "community@openclaw.org"
+
+license: MIT
+homepage: "https://github.com/yourusername/auto-summary-system"
+repository: "https://github.com/yourusername/auto-summary-system.git"
+documentation: "https://github.com/yourusername/auto-summary-system/blob/main/README.md"
+
+tags:
+  - automation
+  - reporting
+  - productivity
+  - summary
+  - daily-report
+  - weekly-report
+  - email-notification
+
+keywords:
+  - 自动化
+  - 报表
+  - 汇总
+  - 日报
+  - 周报
+  - 邮件推送
+  - 定时任务
+
+icon: "📊"
+
+category: productivity
+
+requirements:
+  python_version: ">=3.8"
+  dependencies:
+    - name: pandas
+      version: ">=1.3.0"
+      optional: false
+    - name: openpyxl
+      version: ">=3.0.0"
+      optional: false
+    - name: schedule
+      version: ">=1.1.0"
+      optional: false
+    - name: PyYAML
+      version: ">=5.4.0"
+      optional: false
+    - name: requests
+      version: ">=2.25.0"
+      optional: false
+
+installation:
+  type: "git"
+  url: "https://github.com/yourusername/auto-summary-system.git"
+  
+  steps:
+    - name: "安装Python依赖"
+      command: "pip install -r requirements.txt"
+      description: "安装系统所需的Python包"
+    
+    - name: "初始化系统"
+      command: "python3 main.py init"
+      description: "创建必要的数据和报表目录"
+    
+    - name: "测试系统"
+      command: "python3 test_system.py"
+      description: "运行系统测试验证安装"
+  
+  post_install_message: |
+    🎉 自动化汇总系统安装完成！
+    
+    下一步操作：
+    1. 编辑配置文件: nano config.yaml
+    2. 配置客户邮箱: client.email
+    3. 配置SMTP: notification.email.*
+    4. 添加测试记录: openclaw run auto-summary-system add "测试记录"
+    5. 生成测试报表: openclaw run auto-summary-system report daily
+    
+    查看详细文档: cat QUICKSTART.md
+
+configuration:
+  required:
+    - key: "client.email"
+      description: "客户邮箱地址（用于接收报表）"
+      type: "email"
+    
+    - key: "notification.email.smtp_server"
+      description: "SMTP服务器地址"
+      type: "string"
+      default: "smtp.gmail.com"
+    
+    - key: "notification.email.username"
+      description: "邮箱用户名"
+      type: "string"
+    
+    - key: "notification.email.password"
+      description: "邮箱密码或应用专用密码"
+      type: "password"
+  
+  optional:
+    - key: "schedule.daily.time"
+      description: "日报生成时间"
+      type: "string"
+      default: "18:00"
+    
+    - key: "schedule.weekly.day"
+      description: "周报生成星期几"
+      type: "choice"
+      choices: ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+      default: "friday"
+    
+    - key: "schedule.weekly.time"
+      description: "周报生成时间"
+      type: "string"
+      default: "17:00"
+
+commands:
+  add:
+    description: "添加工作记录"
+    usage: "add <content> [--category <category>]"
+    examples:
+      - "add '完成登录功能开发'"
+      - "add '修复支付bug' --category 'Bug修复'"
+    options:
+      - name: "--category"
+        description: "记录类别"
+        default: "工作记录"
+  
+  list:
+    description: "列出工作记录"
+    usage: "list [--limit <num>] [--today]"
+    examples:
+      - "list --today"
+      - "list --limit 20"
+    options:
+      - name: "--limit"
+        description: "限制显示数量"
+        type: "integer"
+        default: 10
+      - name: "--today"
+        description: "仅显示今日记录"
+        type: "boolean"
+  
+  report:
+    description: "生成报表"
+    usage: "report <daily|weekly> [--date <YYYY-MM-DD>] [--notify]"
+    examples:
+      - "report daily --notify"
+      - "report weekly --date 2026-03-13"
+    options:
+      - name: "--date"
+        description: "指定日期"
+        type: "date"
+      - name: "--notify"
+        description: "自动发送给客户"
+        type: "boolean"
+  
+  scheduler:
+    description: "管理定时调度器"
+    usage: "scheduler <start|stop|info|run>"
+    examples:
+      - "scheduler start"
+      - "scheduler info"
+    subcommands:
+      - name: "start"
+        description: "启动调度器"
+      - name: "stop"
+        description: "停止调度器"
+      - name: "info"
+        description: "显示调度器信息"
+      - name: "run"
+        description: "手动运行任务"
+        usage: "run <daily|weekly>"
+  
+  status:
+    description: "显示系统状态"
+    usage: "status"
+  
+  init:
+    description: "初始化系统"
+    usage: "init"
+
+entry_points:
+  main: "setup.py"
+  cli: "main.py"
+  web: null
+
+compatibility:
+  openclaw_version: ">=0.1.0"
+  platforms:
+    - "linux"
+    - "macos"
+    - "windows"
+
+# OpenClaw Skill元数据
+metadata:
+  skill_type: "system"
+  architecture: "multi-skill"
+  skills_count: 7
+  features:
+    - "daily-summary"
+    - "weekly-summary"
+    - "email-notification"
+    - "schedule-trigger"
+    - "excel-report"
+    - "data-storage"
+  
+  created_date: "2026-03-13"
+  last_updated: "2026-03-13"
+  
+  localization:
+    - language: "zh-CN"
+      name: "自动化汇总系统"
+      description: "支持日报、周报自动生成与推送的自动化系统"
+    
+    - language: "en"
+      name: "Auto Summary System"
+      description: "Automated system for daily and weekly summary generation and delivery"

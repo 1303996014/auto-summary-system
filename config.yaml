@@ -1,0 +1,47 @@
+# 自动化汇总系统配置文件
+
+# 存储配置
+storage:
+  path: ./data  # 数据存储目录
+  format: json  # 存储格式
+
+# 报表配置
+report:
+  output_path: ./reports  # 报表输出目录
+  format: excel  # 报表格式: excel, pdf
+  include_charts: true  # 是否包含图表
+
+# 定时任务配置
+schedule:
+  daily:
+    enabled: true
+    time: "18:00"  # 日报触发时间 (24小时制)
+  weekly:
+    enabled: true
+    day: "friday"  # 周报触发日: monday, tuesday, ..., sunday
+    time: "17:00"  # 周报触发时间
+
+# 客户配置
+client:
+  email: "client@example.com"  # 客户邮箱地址
+  name: "客户名称"  # 客户名称
+
+# 通知配置
+notification:
+  email:
+    smtp_server: "smtp.gmail.com"
+    smtp_port: 587
+    username: "your-email@gmail.com"
+    password: "your-app-password"
+    use_tls: true
+  
+  webhook:
+    enabled: false
+    url: "https://your-webhook-url.com/notify"
+
+# 日志配置
+logging:
+  level: INFO  # DEBUG, INFO, WARNING, ERROR
+  file: ./logs/system.log  # 日志文件路径
+  max_size: 10MB  # 日志文件最大大小
+  backup_count: 5  # 保留的日志文件数量

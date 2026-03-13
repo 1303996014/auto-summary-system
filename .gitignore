@@ -1,0 +1,186 @@
+# ========================================================================
+# 自动化汇总系统 - Git忽略规则
+# 说明：此配置确保只提交源代码和必要文档，排除敏感文件和临时文件
+# ========================================================================
+
+# ==================== Python ====================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ==================== 虚拟环境 ====================
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ==================== IDE ====================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# ==================== 操作系统 ====================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ==================== 项目数据文件（不提交到Git） ====================
+# 数据文件 - 包含用户工作记录，可能敏感
+data/
+data/*.json
+!data/.gitkeep
+
+# 报表文件 - 生成的报表，不需要版本控制
+reports/
+reports/*.xlsx
+reports/*.pdf
+reports/*.csv
+!reports/.gitkeep
+
+# 日志文件 - 运行时日志
+logs/
+logs/*.log
+*.log
+!logs/.gitkeep
+
+# 临时测试文件
+test_data/
+test_reports/
+temp/
+tmp/
+
+# ==================== 配置文件（保护敏感信息） ====================
+# 本地配置文件 - 可能包含敏感信息
+config.local.yaml
+config.prod.yaml
+config.dev.yaml
+config.private.yaml
+
+# 环境变量文件
+.env
+.env.local
+.env.production
+.env.development
+
+# ==================== 密钥和证书（绝对不能提交） ====================
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+*.p8
+.credentials
+.secret
+.secrets
+token.txt
+password.txt
+
+# ==================== 备份文件 ====================
+*.bak
+*.backup
+*.backup~
+*~
+*.old
+*.orig
+*.rej
+*.tmp
+*.temp
+
+# ==================== 包文件 ====================
+*.zip
+checksums.txt
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+
+# ==================== 测试覆盖率 ====================
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+
+# ==================== 其他 ====================
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# ==================== 例外规则（允许提交的文件） ====================
+# 保留.gitkeep文件以确保空目录结构
+!.gitkeep
+
+# 保留示例配置文件
+!config.yaml
+!config.example.yaml
+
+# 保留文档
+!*.md
+!*.MD
+
+# 保留许可证
+!LICENSE
+
+# 保留Skill配置
+!skill.yaml
+!skill.json
+
+# 保留Python源代码
+!*.py
+
+# 保留脚本
+!*.sh
+
+# 保留依赖文件
+!requirements.txt
+
+# ==================== 说明 ====================
+# 如果需要备份数据文件，请使用: 
+# git add -f data/daily_records.json
+# 
+# 如果需要提交特定报表：
+# git add -f reports/special_report.xlsx

@@ -1,0 +1,121 @@
+name: Test and Validate
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, "3.10", "3.11"]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Run syntax check
+      run: |
+        python -m py_compile main.py
+        python -m py_compile skills/*.py
+    
+    - name: Test imports
+      run: |
+        python -c "from skills.storage_manager import StorageManager"
+        python -c "from skills.daily_summary import DailySummary"
+        python -c "from skills.weekly_summary import WeeklySummary"
+        python -c "from skills.schedule_trigger import ScheduleTrigger"
+        python -c "from skills.report_generator import ReportGenerator"
+        python -c "from skills.client_notifier import ClientNotifier"
+    
+    - name: Test configuration
+      run: |
+        # 创建测试配置
+        cp config.yaml config.test.yaml
+        sed -i 's/client@example.com/test@example.com/' config.test.yaml
+    
+    - name: Test data storage
+      run: |
+        # 测试存储管理器
+        python3 -c "
+        from skills.storage_manager import StorageManager
+        manager = StorageManager('./test_data')
+        record = manager.add_record('测试记录', '测试类别')
+        assert record is not None
+        records = manager.get_today_records()
+        assert len(records) > 0
+        print('✅ 数据存储测试通过')
+        "
+    
+    - name: Test report generation
+      run: |
+        # 创建测试数据
+        mkdir -p test_reports
+        python3 -c "
+        from skills.report_generator import ReportGenerator
+        import json
+        
+        # 创建测试记录
+        test_records = [
+            {
+                'id': 'test-1',
+                'timestamp': '2026-03-13T10:00:00',
+                'content': '测试记录1',
+                'category': '测试'
+            },
+            {
+                'id': 'test-2',
+                'timestamp': '2026-03-13T14:00:00',
+                'content': '测试记录2',
+                'category': '测试'
+            }
+        ]
+        
+        generator = ReportGenerator('./config.test.yaml')
+        result = generator.export_to_csv(test_records, './test_reports/test.csv')
+        assert result is not None
+        print('✅ 报表生成测试通过')
+        "
+    
+    - name: Validate config files
+      run: |
+        # 验证YAML配置
+        python3 -c "
+        import yaml
+        with open('config.yaml', 'r') as f:
+            config = yaml.safe_load(f)
+        assert 'storage' in config
+        assert 'schedule' in config
+        assert 'client' in config
+        print('✅ 配置文件验证通过')
+        "
+    
+    - name: Check file structure
+      run: |
+        # 检查必要文件
+        test -f main.py
+        test -f config.yaml
+        test -f requirements.txt
+        test -f README.md
+        test -f skill.yaml
+        test -f skill.json
+        test -d skills
+        echo "✅ 文件结构检查通过"
+    
+    - name: Clean up test files
+      run: |
+        rm -rf test_data test_reports config.test.yaml

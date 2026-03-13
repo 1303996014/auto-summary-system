@@ -1,0 +1,105 @@
+name: Release to GitHub
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., v1.0.0)'
+        required: true
+        type: string
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Create release package
+      run: |
+        # 创建发布包
+        mkdir -p dist
+        zip -r dist/auto-summary-system.zip . -x "*.git*" "*__pycache__*" "*.pyc" ".DS_Store"
+        
+        # 计算校验和
+        cd dist
+        sha256sum auto-summary-system.zip > checksums.txt
+        cd ..
+    
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref_name || github.event.inputs.version }}
+        release_name: Release ${{ github.ref_name || github.event.inputs.version }}
+        body: |
+          ## 自动化汇总系统 ${{ github.ref_name || github.event.inputs.version }}
+          
+          ### 功能特性
+          - 日常记录管理
+          - 自动生成日报
+          - 自动生成周报
+          - 定时任务调度
+          - 邮件自动推送
+          - 多Skill协同架构
+          
+          ### 安装方式
+          
+          **通过OpenClaw安装（推荐）:**
+          ```bash
+          openclaw install auto-summary-system
+          ```
+          
+          **手动安装:**
+          1. 下载 `auto-summary-system.zip`
+          2. 解压到目标目录
+          3. 运行 `pip install -r requirements.txt`
+          4. 编辑 `config.yaml` 配置文件
+          5. 运行 `python3 main.py init` 初始化
+          
+          ### 快速开始
+          
+          1. 添加记录: `openclaw run auto-summary-system add '工作内容'`
+          2. 查看记录: `openclaw run auto-summary-system list --today`
+          3. 生成报表: `openclaw run auto-summary-system report daily --notify`
+          4. 启动调度: `openclaw run auto-summary-system scheduler start`
+          
+          详细文档请查看 [USAGE_EXAMPLES.md](./USAGE_EXAMPLES.md)
+        draft: false
+        prerelease: false
+    
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./dist/auto-summary-system.zip
+        asset_name: auto-summary-system.zip
+        asset_content_type: application/zip
+    
+    - name: Upload Checksum
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./dist/checksums.txt
+        asset_name: checksums.txt
+        asset_content_type: text/plain

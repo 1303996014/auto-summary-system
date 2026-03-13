@@ -1,0 +1,109 @@
+{
+  "name": "auto-summary-system",
+  "version": "1.0.0",
+  "description": "自动化汇总系统 - 支持日报、周报自动生成与推送，多Skill协同架构",
+  "author": "OpenClaw Community",
+  "license": "MIT",
+  "repository": "https://github.com/yourusername/auto-summary-system",
+  "keywords": ["summary", "report", "automation", "daily", "weekly", "openclaw"],
+  "categories": ["productivity", "automation", "reporting"],
+  "requirements": {
+    "python": ">=3.8",
+    "dependencies": [
+      "pandas>=1.3.0",
+      "openpyxl>=3.0.0",
+      "schedule>=1.1.0",
+      "PyYAML>=5.4.0",
+      "requests>=2.25.0"
+    ]
+  },
+  "entry_points": {
+    "main": "setup.py",
+    "commands": {
+      "add": "添加工作记录",
+      "list": "列出工作记录",
+      "report": "生成报表",
+      "scheduler": "管理定时任务",
+      "status": "显示系统状态",
+      "init": "初始化系统"
+    }
+  },
+  "configuration": {
+    "file": "config.yaml",
+    "template": {
+      "storage": {
+        "path": "./data"
+      },
+      "report": {
+        "output_path": "./reports"
+      },
+      "schedule": {
+        "daily": {
+          "enabled": true,
+          "time": "18:00"
+        },
+        "weekly": {
+          "enabled": true,
+          "day": "friday",
+          "time": "17:00"
+        }
+      },
+      "client": {
+        "email": "client@example.com"
+      }
+    }
+  },
+  "documentation": {
+    "readme": "README.md",
+    "examples": [
+      {
+        "command": "openclaw run auto-summary-system add '今日完成工作...'",
+        "description": "添加工作记录"
+      },
+      {
+        "command": "openclaw run auto-summary-system list --today",
+        "description": "查看今日记录"
+      },
+      {
+        "command": "openclaw run auto-summary-system report daily --notify",
+        "description": "生成日报并发送给客户"
+      },
+      {
+        "command": "openclaw run auto-summary-system scheduler start",
+        "description": "启动定时调度器"
+      }
+    ]
+  },
+  "skills": [
+    {
+      "name": "storage-manager",
+      "description": "数据存储管理，记录和查询工作记录",
+      "file": "skills/storage_manager.py"
+    },
+    {
+      "name": "daily-summary",
+      "description": "日报汇总生成",
+      "file": "skills/daily_summary.py"
+    },
+    {
+      "name": "weekly-summary",
+      "description": "周报汇总生成",
+      "file": "skills/weekly_summary.py"
+    },
+    {
+      "name": "schedule-trigger",
+      "description": "定时任务调度触发",
+      "file": "skills/schedule_trigger.py"
+    },
+    {
+      "name": "report-generator",
+      "description": "报表生成（Excel/PDF）",
+      "file": "skills/report_generator.py"
+    },
+    {
+      "name": "client-notifier",
+      "description": "客户推送通知",
+      "file": "skills/client_notifier.py"
+    }
+  ]
+}
