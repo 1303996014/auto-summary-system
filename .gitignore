@@ -162,6 +162,9 @@ GITHUB_SETUP.md
 GITHUB_SUBMIT.md
 PROJECT_SUMMARY.md
 
+# OpenClaw 运行时元数据
+_meta.json
+
 # Pyre type checker
 .pyre/
 
